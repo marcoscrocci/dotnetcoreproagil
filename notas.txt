@@ -93,6 +93,27 @@ dotnet ef database update
 *** No curso é substituído o ActionResult que mais apropriado para ser utilizado com o Razor,
 por IActionResult. Deixei um histórico no Github.
 
+-----------------------------------------------------------------------------------------------
+*** Instalação do Angular 11
+https://angular.io/guide/setup-local
+
+-----------------------------------------------------------------------------------------------
+*** Instalação do Angular 12
+https://angular.io/guide/setup-local
+https://angular.io/cli
+-----------------------------------------------------------------------------------------------
+*** Verificar a versão do Angular
+ng --version
+-----------------------------------------------------------------------------------------------
+*** Criar o projeto do Angular
+marcoscrocci@iMac-de-Marcos ~ % ng new ProAgil-App
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? CSS
+-----------------------------------------------------------------------------------------------
+*** Executar o projeto do Angular com a opção para já abrir.
+cd ProAgil-App
+ng serve -o
+-----------------------------------------------------------------------------------------------
 
 
 
