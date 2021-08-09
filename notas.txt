@@ -114,6 +114,12 @@ marcoscrocci@iMac-de-Marcos ~ % ng new ProAgil-App
 cd ProAgil-App
 ng serve -o
 -----------------------------------------------------------------------------------------------
+*** Extensões do VS Code instaladas para o curso.
+Debugger for Chrome, Angular Files, Angular Language Service, Angular2-switcher, 
+Auto Rename Tag, Bracket Pair Colorizer 2, C# for Visual Studio Code, C# Extensions,
+Material Icon Theme, npm, NuGet Gallery, NuGet Package Manager, Path Intellisense,
+Prettier, TSLint, Angular Snippets (Version 12)
+-----------------------------------------------------------------------------------------------
 
 
 
