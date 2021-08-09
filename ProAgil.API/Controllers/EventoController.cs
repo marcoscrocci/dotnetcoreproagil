@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using ProAgil.API.Data;
 using ProAgil.API.Model;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace ProAgil.API.Controllers
 {
@@ -20,11 +22,11 @@ namespace ProAgil.API.Controllers
 
         // GET api/evento
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                var results = _context.Eventos.ToList();
+                var results = await _context.Eventos.ToListAsync();
                 return Ok(results);
             }
             catch (System.Exception)
@@ -35,29 +37,17 @@ namespace ProAgil.API.Controllers
 
         //GET api/evento/1
         [HttpGet("{EventoId}")]
-        public ActionResult<Evento> Get(int EventoId)
+        public async Task<IActionResult> Get(int EventoId)
         {
-            return _context.Eventos.FirstOrDefault(x => x.EventoId == EventoId);
-            /**
-            return new Evento[] {
-                new Evento {
-                    EventoId = 1,
-                    Tema = "Angular e .NET Core",
-                    Local = "Belo Horizonte",
-                    Lote = "1º Lote",
-                    QtdPessoas = 250,
-                    DataEvento = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy")
-                },
-                new Evento {
-                    EventoId = 2,
-                    Tema = "Angular e Suas Novidades",
-                    Local = "São Paulo",
-                    Lote = "2º Lote",
-                    QtdPessoas = 350,
-                    DataEvento = DateTime.Now.AddDays(3).ToString("dd/MM/yyyy")
-                }
-            }.FirstOrDefault(x => x.EventoId == EventoId);
-            */
+            try
+            {
+                var results = await _context.Eventos.FirstOrDefaultAsync(x => x.EventoId == EventoId);
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou!");
+            };
         }
 
     }
