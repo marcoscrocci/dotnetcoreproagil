@@ -118,7 +118,23 @@ ng serve -o
 Debugger for Chrome, Angular Files, Angular Language Service, Angular2-switcher, 
 Auto Rename Tag, Bracket Pair Colorizer 2, C# for Visual Studio Code, C# Extensions,
 Material Icon Theme, npm, NuGet Gallery, NuGet Package Manager, Path Intellisense,
-Prettier, TSLint, Angular Snippets (Version 12)
+Prettier, TSLint, Angular Snippets (Version 12), Angular UI Bootstrap Snippets
+-----------------------------------------------------------------------------------------------
+*** No projeto Angular, instalar o bootstrap:
+https://getbootstrap.com/docs/5.1/getting-started/download/
+npm install bootstrap
+-----------------------------------------------------------------------------------------------
+*** No projeto Angular, instalar o fontawesome:
+https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers
+npm install --save @fortawesome/fontawesome-free
+-----------------------------------------------------------------------------------------------
+*** Referenciar o bootstrap e o fontawesome no projeto Angular:
+Abrir o arquivo angular.json e importar os arquivos:
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+-----------------------------------------------------------------------------------------------
+*** Pegar a Navbar do exemplo do bootstrap abaixo:
+https://getbootstrap.com/docs/4.0/examples/jumbotron/
 -----------------------------------------------------------------------------------------------
 
 
