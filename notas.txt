@@ -1,0 +1,109 @@
+*** Executar o comando dotnet para verificar as opções disponíveis: 
+marcoscrocci@iMac-de-Marcos dotnetcore % dotnet
+
+Usage: dotnet [options]
+Usage: dotnet [path-to-application]
+
+Options:
+  -h|--help         Display help.
+  --info            Display .NET Core information.
+  --list-sdks       Display the installed SDKs.
+  --list-runtimes   Display the installed runtimes.
+
+path-to-application:
+  The path to an application .dll file to execute.
+-----------------------------------------------------------------------------------------------
+*** Listar as versões de sdks instaladas no computador:
+marcoscrocci@iMac-de-Marcos dotnetcore % dotnet --list-sdks
+3.1.302 [/usr/local/share/dotnet/sdk]
+3.1.404 [/usr/local/share/dotnet/sdk]
+5.0.101 [/usr/local/share/dotnet/sdk]
+
+-----------------------------------------------------------------------------------------------
+*** Verificar a versão atual da sdk do dotnet core.
+marcoscrocci@iMac-de-Marcos dotnetcore % dotnet --version
+5.0.101
+
+-----------------------------------------------------------------------------------------------
+*** Para gerar um projeto em uma versão anterior e mais específica, devemos criar uma arquivo
+chamado global.json, como mostra a seguir:
+{
+    "sdk": {
+        "version": "3.1.404"
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+*** Solicitar ajuda para verificar os comandos do dotnet:
+dotnet -h
+-----------------------------------------------------------------------------------------------
+*** Verificar a lista de templetes:
+dotnet new -l
+-----------------------------------------------------------------------------------------------
+*** Para gerar um novo projeto no template "ASP.NET Core Web API" na versão específica ou na 
+última versão (quando não tiver o global.json), utilizamos o "Short Name":
+dotnet new webapi -n ProAgil.API
+
+-----------------------------------------------------------------------------------------------
+*** No arquivo /Properties/launchSettings.json, tirar o https, mantendo somente o http:
+Antes: "applicationUrl": "https://localhost:5001;http://localhost:5000",
+Depois: "applicationUrl": "http://localhost:5000",
+*** Com isso, no arquivo Startup.cs, comentar (ou remover) a linha:
+app.UseHttpsRedirection();
+
+-----------------------------------------------------------------------------------------------
+*** Instalar o Entity Framework CLI:
+dotnet tool install --global dotnet-ef
+Site de referência: https://docs.microsoft.com/pt-br/ef/core/cli/dotnet
+-----------------------------------------------------------------------------------------------
+*** Rodar o Entity Framework:
+dotnet ef
+-----------------------------------------------------------------------------------------------
+*** Ajuda para criar uma migration para criar o banco de dados:
+dotnet ef migrations -h
+-----------------------------------------------------------------------------------------------
+*** Utilizar a Extensão NuGet Gallery e instalar:
+Microsoft.EntityFrameworkCore.Design
+-----------------------------------------------------------------------------------------------
+*** Criar e inicializar uma migration para criar o banco de dados:
+dotnet ef migrations add init
+marcoscrocci@iMac-de-Marcos ProAgil.API % dotnet ef migrations add init
+Build started...
+Build succeeded.
+Done. To undo this action, use 'ef migrations remove'
+Observações: Este comando cria a pasta Migrations no projeto e os scripts iniciais para criar a 
+tabela Eventos, que já foi definida no projeto.
+-----------------------------------------------------------------------------------------------
+*** Ajuda para a opção database das migrations:
+dotnet ef database -h
+-----------------------------------------------------------------------------------------------
+*** Atualizar ou cria o banco de dados com base nas migrations:
+dotnet ef database update
+Observações: Este comando deverá criar o arquivo ProAgil.db na pasta raiz do projeto.
+-----------------------------------------------------------------------------------------------
+*** Baixar o software SQLite Browser no site:
+https://sqlitebrowser.org/dl/
+-----------------------------------------------------------------------------------------------
+*** No curso, no Teste 4, o instrutor pede para adicionar o campo ImagemURL na classe 
+Evento.csv. Para gerar nova migrations para atualizar o banco de dados, foi necessário executar 
+os comandos:
+dotnet ef migrations add 'EventoImagemUrl'
+dotnet ef database update
+-----------------------------------------------------------------------------------------------
+*** No curso é substituído o ActionResult que mais apropriado para ser utilizado com o Razor,
+por IActionResult. Deixei um histórico no Github.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
