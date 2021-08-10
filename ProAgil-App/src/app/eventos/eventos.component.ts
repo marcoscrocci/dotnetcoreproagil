@@ -8,35 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventosComponent implements OnInit {
 
-  eventos: any;
-  /** = [
-    {
-      EventoId: 1,
-      Tema: 'Angular',
-      Local: 'Belo Horizonte',
-      QtdPessoas: 333,
-      Lote: '1º lote'
-    },
-    {
-      EventoId: 2,
-      Tema: '.NET Core',
-      Local: 'São Paulo',
-      QtdPessoas: 222,
-      Lote: '2º lote'
-    },
-    {
-      EventoId: 3,
-      Tema: 'React',
-      Local: 'Rio de Janeiro',
-      QtdPessoas: 111,
-      Lote: '3º lote'
-    }
-  ]; */
+  _filtroLista: string = '';
+  get filtroLista(): string {
+    return this._filtroLista;
+  }
+  set filtroLista(value: string) {
+    this._filtroLista = value;
+    this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos;
+  }
+
+  eventosFiltrados: any = [];
+  eventos: any = [];
+  imagemLargura = 50;
+  imagemMargem = 2;
+  mostrarImagem = false;
+  //filtroLista = '';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getEventos();
+  }
+
+  alternarImagem() {
+    this.mostrarImagem = !this.mostrarImagem;
   }
 
   getEventos() {
@@ -45,6 +40,11 @@ export class EventosComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  filtrarEventos(filtrarPor: string): any {
+    filtrarPor = filtrarPor.toLocaleLowerCase();
+    return this.eventos.filter((evento: { tema: string; }) => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1);
   }
 
 }

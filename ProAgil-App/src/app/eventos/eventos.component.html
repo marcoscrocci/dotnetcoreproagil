@@ -1,13 +1,69 @@
-<p>
-  eventos works!
-</p>
-
-<!-- {{eventos[0].Tema}} -->
-
-<div *ngFor="let evento of eventos">
-  Tema: {{evento.tema }}
-  <br />
-  Local: {{evento.local }}
-  <hr />
-
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <div style="display: flex;">
+      <div style="flex: 1">
+        <div style="display: flex; align-items: center; margin-right: 10px;">
+          <div style="margin-right: 10px;">Filtro:</div>
+          <input
+            type="text"
+            style="flex: 1"
+            class="form-control mr-2"
+            placeholder="Texto para filtrar"
+            [(ngModel)]="filtroLista"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<h3>Filtro: {{filtroLista}}</h3>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        <button class="btn btn-outline-primary"
+          (click)="alternarImagem()"
+        >
+          Mostrar Imagem
+        </button>
+      </th>
+      <th>#</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Qtd Pessoas</th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="eventosFiltrados && eventosFiltrados.length">
+    <tr *ngFor="let evento of eventosFiltrados">
+      <td>
+        <img *ngIf="mostrarImagem"
+          src="http://localhost:5000/img/{{evento.imagemURL}}" alt=""
+          [style.width.px]="imagemLargura"
+          [style.margin.px]="imagemMargem"
+        >
+      </td>
+      <td>{{evento.eventoId}}</td>
+      <td>{{evento.tema}}</td>
+      <td>{{evento.local}}</td>
+      <td>{{evento.dataEvento}}</td>
+      <td>{{evento.qtdPessoas}}</td>
+      <td>{{evento.lote | uppercase}}</td>
+      <td>
+        <button class="btn btn-success">Editar</button>
+        <button class="btn btn-danger">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!eventos.length">
+    <tr>
+      <td colspan="7" class="text-center">
+        <h4>
+          Nenhum evento encontrado!
+        </h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
