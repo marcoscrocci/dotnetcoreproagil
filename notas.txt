@@ -136,12 +136,52 @@ Abrir o arquivo angular.json e importar os arquivos:
 *** Pegar a Navbar do exemplo do bootstrap abaixo:
 https://getbootstrap.com/docs/4.0/examples/jumbotron/
 -----------------------------------------------------------------------------------------------
+*** Criar o projeto Domain:
+dotnet new classlib -n ProAgil.Domain
+-----------------------------------------------------------------------------------------------
+*** Criar o projeto Repository:
+dotnet new classlib -n ProAgil.Repository
+-----------------------------------------------------------------------------------------------
+*** Criar o projeto Solução:
+dotnet new sln -n ProAgil
+-----------------------------------------------------------------------------------------------
+*** Referenciar o projeto Domain no projeto Repository:
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.Repository/ProAgil.Repository.csproj reference ProAgil.Domain/ProAgil.Domain.csproj 
+A referência ‘..\ProAgil.Domain\ProAgil.Domain.csproj’ foi adicionada ao projeto.
+-----------------------------------------------------------------------------------------------
+*** Referenciar o projeto Domain no projeto API:
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.API/ProAgil.API.csproj reference ProAgil.Domain/ProAgil.Domain.csproj 
+A referência ‘..\ProAgil.Domain\ProAgil.Domain.csproj’ foi adicionada ao projeto.
+-----------------------------------------------------------------------------------------------
+*** Referenciar o projeto Repository no projeto API:
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.API/ProAgil.API.csproj reference ProAgil.Repository/ProAgil.Repository.csproj 
+A referência ‘..\ProAgil.Repository\ProAgil.Repository.csproj’ foi adicionada ao projeto.
+-----------------------------------------------------------------------------------------------
+*** Referenciar/Adicionar todos os projetos na Solução:
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet sln ProAgil.sln add ProAgil.API/ProAgil.API.csproj ProAgil.Repository/ProAgil.Repository.csproj ProAgil.Domain/ProAgil.Domain.csproj 
+O projeto ‘ProAgil.API/ProAgil.API.csproj’ foi adicionado à solução.
+O projeto ‘ProAgil.Repository/ProAgil.Repository.csproj’ foi adicionado à solução.
+O projeto ‘ProAgil.Domain/ProAgil.Domain.csproj’ foi adicionado à solução.
+-----------------------------------------------------------------------------------------------
+*** Compilar a Solução:
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet build
+Microsoft(R) Build Engine versão 16.8.0+126527ff1 para .NET 
+Copyright (C) Microsoft Corporation. Todos os direitos reservados.
 
+  Determinando os projetos a serem restaurados...
+  /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Repository/ProAgil.Repository.csproj restaurado (em 126 ms).
+  /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Domain/ProAgil.Domain.csproj restaurado (em 126 ms).
+  /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.API/ProAgil.API.csproj restaurado (em 715 ms).
+  ProAgil.Domain -> /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Domain/bin/Debug/net5.0/ProAgil.Domain.dll
+  ProAgil.Repository -> /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Repository/bin/Debug/net5.0/ProAgil.Repository.dll
+  ProAgil.API -> /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.API/bin/Debug/net5.0/ProAgil.API.dll
 
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
 
-
-
-
+Tempo Decorrido 00:00:09.52
+-----------------------------------------------------------------------------------------------
 
 
 
