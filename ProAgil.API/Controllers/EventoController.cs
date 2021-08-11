@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using ProAgil.API.Data;
-using ProAgil.API.Model;
+//using ProAgil.API.Data;
+//using ProAgil.API.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -14,7 +14,7 @@ namespace ProAgil.API.Controllers
     [Route("api/[controller]")]
     public class EventoController : ControllerBase
     {
-        public readonly DataContext _context;
+        /*public readonly DataContext _context;
         public EventoController(DataContext context)
         {
             _context = context;
@@ -48,7 +48,7 @@ namespace ProAgil.API.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou!");
             };
-        }
+        }*/
 
     }
 }
