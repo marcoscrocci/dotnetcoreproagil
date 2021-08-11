@@ -201,7 +201,19 @@ The specified framework can be found at:
   - https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=2.0.0&arch=x64&rid=osx.11.0-x64
 -----------------------------------------------------------------------------------------------
 *** Para criar as migrations no Repository API devemos referenciar o projeto API:
-
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % cd ProAgil.Repository                                            
+marcoscrocci@iMac-de-Marcos ProAgil.Repository % dotnet ef --startup-project ../ProAgil.WebAPI migrations add init
+Build started...
+Build succeeded.
+The Entity Framework tools version '5.0.8' is older than that of the runtime '5.0.9'. Update the tools for the latest features and bug fixes.
+Done. To undo this action, use 'ef migrations remove'
+-----------------------------------------------------------------------------------------------
+*** Para executar as migrations e criar o banco de dados:
+marcoscrocci@iMac-de-Marcos ProAgil.Repository % dotnet ef --startup-project ../ProAgil.WebAPI database update 
+Build started...
+Build succeeded.
+The Entity Framework tools version '5.0.8' is older than that of the runtime '5.0.9'. Update the tools for the latest features and bug fixes.
+Done.
 -----------------------------------------------------------------------------------------------
 
 

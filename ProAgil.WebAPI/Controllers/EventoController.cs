@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using ProAgil.WebAPI.Data;
-using ProAgil.WebAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using ProAgil.Repository;
 
 namespace ProAgil.WebAPI.Controllers
 {
@@ -14,8 +13,8 @@ namespace ProAgil.WebAPI.Controllers
     [Route("api/[controller]")]
     public class EventoController : ControllerBase
     {
-        public readonly DataContext _context;
-        public EventoController(DataContext context)
+        public readonly ProAgilContext _context;
+        public EventoController(ProAgilContext context)
         {
             _context = context;
         }
@@ -41,7 +40,7 @@ namespace ProAgil.WebAPI.Controllers
         {
             try
             {
-                var results = await _context.Eventos.FirstOrDefaultAsync(x => x.EventoId == EventoId);
+                var results = await _context.Eventos.FirstOrDefaultAsync(x => x.Id == EventoId);
                 return Ok(results);
             }
             catch (System.Exception)
