@@ -1,6 +1,6 @@
 using System;
 
-namespace ProAgil.API
+namespace ProAgil.WebAPI
 {
     public class WeatherForecast
     {

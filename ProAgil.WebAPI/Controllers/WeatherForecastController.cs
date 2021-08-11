@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace ProAgil.API.Controllers
+namespace ProAgil.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

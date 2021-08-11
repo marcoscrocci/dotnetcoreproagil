@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace ProAgil.API
+namespace ProAgil.WebAPI
 {
     public class Program
     {

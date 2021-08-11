@@ -42,7 +42,7 @@ dotnet new -l
 -----------------------------------------------------------------------------------------------
 *** Para gerar um novo projeto no template "ASP.NET Core Web API" na versão específica ou na 
 última versão (quando não tiver o global.json), utilizamos o "Short Name":
-dotnet new webapi -n ProAgil.API
+dotnet new webapi -n ProAgil.WebAPI
 
 -----------------------------------------------------------------------------------------------
 *** No arquivo /Properties/launchSettings.json, tirar o https, mantendo somente o http:
@@ -67,7 +67,7 @@ Microsoft.EntityFrameworkCore.Design
 -----------------------------------------------------------------------------------------------
 *** Criar e inicializar uma migration para criar o banco de dados:
 dotnet ef migrations add init
-marcoscrocci@iMac-de-Marcos ProAgil.API % dotnet ef migrations add init
+marcoscrocci@iMac-de-Marcos ProAgil.WebAPI % dotnet ef migrations add init
 Build started...
 Build succeeded.
 Done. To undo this action, use 'ef migrations remove'
@@ -150,16 +150,16 @@ marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.Repository/ProAgi
 A referência ‘..\ProAgil.Domain\ProAgil.Domain.csproj’ foi adicionada ao projeto.
 -----------------------------------------------------------------------------------------------
 *** Referenciar o projeto Domain no projeto API:
-marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.API/ProAgil.API.csproj reference ProAgil.Domain/ProAgil.Domain.csproj 
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.WebAPI/ProAgil.WebAPI.csproj reference ProAgil.Domain/ProAgil.Domain.csproj 
 A referência ‘..\ProAgil.Domain\ProAgil.Domain.csproj’ foi adicionada ao projeto.
 -----------------------------------------------------------------------------------------------
 *** Referenciar o projeto Repository no projeto API:
-marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.API/ProAgil.API.csproj reference ProAgil.Repository/ProAgil.Repository.csproj 
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet add ProAgil.WebAPI/ProAgil.WebAPI.csproj reference ProAgil.Repository/ProAgil.Repository.csproj 
 A referência ‘..\ProAgil.Repository\ProAgil.Repository.csproj’ foi adicionada ao projeto.
 -----------------------------------------------------------------------------------------------
 *** Referenciar/Adicionar todos os projetos na Solução:
-marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet sln ProAgil.sln add ProAgil.API/ProAgil.API.csproj ProAgil.Repository/ProAgil.Repository.csproj ProAgil.Domain/ProAgil.Domain.csproj 
-O projeto ‘ProAgil.API/ProAgil.API.csproj’ foi adicionado à solução.
+marcoscrocci@iMac-de-Marcos ProAgilMarcos % dotnet sln ProAgil.sln add ProAgil.WebAPI/ProAgil.WebAPI.csproj ProAgil.Repository/ProAgil.Repository.csproj ProAgil.Domain/ProAgil.Domain.csproj 
+O projeto ‘ProAgil.WebAPI/ProAgil.WebAPI.csproj’ foi adicionado à solução.
 O projeto ‘ProAgil.Repository/ProAgil.Repository.csproj’ foi adicionado à solução.
 O projeto ‘ProAgil.Domain/ProAgil.Domain.csproj’ foi adicionado à solução.
 -----------------------------------------------------------------------------------------------
@@ -171,10 +171,10 @@ Copyright (C) Microsoft Corporation. Todos os direitos reservados.
   Determinando os projetos a serem restaurados...
   /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Repository/ProAgil.Repository.csproj restaurado (em 126 ms).
   /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Domain/ProAgil.Domain.csproj restaurado (em 126 ms).
-  /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.API/ProAgil.API.csproj restaurado (em 715 ms).
+  /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.WebAPI/ProAgil.WebAPI.csproj restaurado (em 715 ms).
   ProAgil.Domain -> /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Domain/bin/Debug/net5.0/ProAgil.Domain.dll
   ProAgil.Repository -> /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.Repository/bin/Debug/net5.0/ProAgil.Repository.dll
-  ProAgil.API -> /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.API/bin/Debug/net5.0/ProAgil.API.dll
+  ProAgil.WebAPI -> /Users/marcoscrocci/Projetos/dotnetcore/ProAgilMarcos/ProAgil.WebAPI/bin/Debug/net5.0/ProAgil.WebAPI.dll
 
 Compilação com êxito.
     0 Aviso(s)
