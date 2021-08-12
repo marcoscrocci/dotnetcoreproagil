@@ -30,6 +30,8 @@ namespace ProAgil.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ProAgilContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            // Add scoped services.
+            services.AddScoped<IProAgilRepository, ProAgilRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
