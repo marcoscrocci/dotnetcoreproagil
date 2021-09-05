@@ -235,7 +235,9 @@ Build at: 2021-09-05T20:32:40.868Z - Hash: 52357a84b34eb8810542 - Time: 12054ms
 
 ✔ Compiled successfully.
 -----------------------------------------------------------------------------------------------
-
+*** Sobre a diferença de Promises e Observables:
+https://pt.stackoverflow.com/questions/207362/qual-%C3%A9-a-diferen%C3%A7a-entre-promises-e-observables/348771#348771
+-----------------------------------------------------------------------------------------------
 
 
 

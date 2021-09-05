@@ -1,5 +1,6 @@
 //import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
 
 @Component({
@@ -9,7 +10,13 @@ import { EventoService } from '../services/evento.service';
 })
 export class EventosComponent implements OnInit {
 
+  eventosFiltrados: Evento[] = [];
+  eventos: Evento[] = [];
+  imagemLargura = 50;
+  imagemMargem = 2;
+  mostrarImagem = false;
   _filtroLista: string = '';
+
   get filtroLista(): string {
     return this._filtroLista;
   }
@@ -18,11 +25,7 @@ export class EventosComponent implements OnInit {
     this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos;
   }
 
-  eventosFiltrados: any = [];
-  eventos: any = [];
-  imagemLargura = 50;
-  imagemMargem = 2;
-  mostrarImagem = false;
+
   //filtroLista = '';
 
   //constructor(private http: HttpClient) { }
@@ -37,15 +40,15 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos() {
-    this.eventoService.getEventos().subscribe(response => {
-      this.eventos = response;
+    this.eventoService.getEventos().subscribe((_eventos: Evento[]) => {
+      this.eventos = _eventos;
       this.eventosFiltrados = this.eventos;
     }, error => {
       console.log(error);
     });
   }
 
-  filtrarEventos(filtrarPor: string): any {
+  filtrarEventos(filtrarPor: string): Evento[] {
     filtrarPor = filtrarPor.toLocaleLowerCase();
     return this.eventos.filter((evento: { tema: string; }) => evento.tema.toLocaleLowerCase().indexOf(filtrarPor) !== -1);
   }
