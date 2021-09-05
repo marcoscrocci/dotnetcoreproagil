@@ -215,6 +215,26 @@ Build succeeded.
 The Entity Framework tools version '5.0.8' is older than that of the runtime '5.0.9'. Update the tools for the latest features and bug fixes.
 Done.
 -----------------------------------------------------------------------------------------------
+*** Iniciar o serviço do Angular:
+marcoscrocci@iMac-de-Marcos ProAgil-App % ng serve
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files | Names         |      Size
+vendor.js           | vendor        |   2.79 MB
+styles.css          | styles        | 218.86 kB
+polyfills.js        | polyfills     | 128.51 kB
+main.js             | main          |  32.81 kB
+runtime.js          | runtime       |   6.62 kB
+
+                    | Initial Total |   3.17 MB
+
+Build at: 2021-09-05T20:32:40.868Z - Hash: 52357a84b34eb8810542 - Time: 12054ms
+
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+
+✔ Compiled successfully.
+-----------------------------------------------------------------------------------------------
 
 
 
