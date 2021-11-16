@@ -94,6 +94,12 @@ dotnet ef database update
 por IActionResult. Deixei um histórico no Github.
 
 -----------------------------------------------------------------------------------------------
+
+Executar o projeto dotnet:
+dotnet run watch
+
+Observações: O watch é opcional e serve para o sistema recompilar após uma alteração no código.
+-----------------------------------------------------------------------------------------------
 *** Instalação do Angular 11
 https://angular.io/guide/setup-local
 

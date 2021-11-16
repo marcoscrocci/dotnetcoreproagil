@@ -1,5 +1,6 @@
 //import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
 
@@ -15,7 +16,12 @@ export class EventosComponent implements OnInit {
   imagemLargura = 50;
   imagemMargem = 2;
   mostrarImagem = false;
+  modalRef!: BsModalRef;
+
   _filtroLista: string = '';
+
+  //constructor(private http: HttpClient) { }
+  constructor(private eventoService: EventoService, private modalService: BsModalService) { }
 
   get filtroLista(): string {
     return this._filtroLista;
@@ -26,10 +32,11 @@ export class EventosComponent implements OnInit {
   }
 
 
-  //filtroLista = '';
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 
-  //constructor(private http: HttpClient) { }
-  constructor(private eventoService: EventoService) { }
+
 
   ngOnInit() {
     this.getEventos();
