@@ -1,6 +1,6 @@
 //import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
@@ -23,7 +23,9 @@ export class EventosComponent implements OnInit {
   _filtroLista: string = '';
 
   //constructor(private http: HttpClient) { }
-  constructor(private eventoService: EventoService, private modalService: BsModalService) { }
+  constructor(private eventoService: EventoService
+      , private modalService: BsModalService
+      , private fb: FormBuilder) { }
 
   get filtroLista(): string {
     return this._filtroLista;
@@ -50,14 +52,14 @@ export class EventosComponent implements OnInit {
   }
 
   validation() {
-    this.registerForm = new FormGroup({
-      tema: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]),
-      local: new FormControl('', Validators.required),
-      dataEvento: new FormControl('', Validators.required),
-      imagemURL: new FormControl('', Validators.required),
-      qtdPessoas: new FormControl('', [Validators.required, Validators.max(120000)]),
-      telefone: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email])
+    this.registerForm = this.fb.group({
+      tema: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+      local: ['', Validators.required],
+      dataEvento: ['', Validators.required],
+      imagemURL: ['', Validators.required],
+      qtdPessoas: ['', [Validators.required, Validators.max(120000)]],
+      telefone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
