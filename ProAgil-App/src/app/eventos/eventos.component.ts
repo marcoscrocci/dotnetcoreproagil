@@ -1,5 +1,6 @@
 //import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Evento } from '../models/Evento';
 import { EventoService } from '../services/evento.service';
@@ -17,6 +18,7 @@ export class EventosComponent implements OnInit {
   imagemMargem = 2;
   mostrarImagem = false;
   modalRef!: BsModalRef;
+  registerForm!: FormGroup;
 
   _filtroLista: string = '';
 
@@ -44,6 +46,21 @@ export class EventosComponent implements OnInit {
 
   alternarImagem() {
     this.mostrarImagem = !this.mostrarImagem;
+  }
+
+  validation() {
+    this.registerForm = new FormGroup({
+      tema: new FormControl,
+      local: new FormControl,
+      dataEvento: new FormControl,
+      qtdPessoas: new FormControl,
+      telefone: new FormControl,
+      email: new FormControl
+    });
+  }
+
+  salvarAlteracao() {
+
   }
 
   getEventos() {
