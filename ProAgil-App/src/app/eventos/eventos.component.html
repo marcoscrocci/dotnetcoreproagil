@@ -121,7 +121,7 @@
     </div>
     <div class="col-md-4">
       <label>Data e Hora</label>
-      <input type="text" class="form-control" formControlName="dataEvento" [ngClass]="{'is-invalid': registerForm.get('dataEvento')!.errors && registerForm.get('dataEvento')!.touched}" placeholder="">
+      <input type="text" class="form-control" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY HH:mm' }" formControlName="dataEvento" [ngClass]="{'is-invalid': registerForm.get('dataEvento')!.errors && registerForm.get('dataEvento')!.touched}" placeholder="">
       <div *ngIf="registerForm.get('dataEvento')?.hasError('required') && registerForm.get('dataEvento')!.touched" class="invalid-feedback">
         Data e Hora são obrigatórios
       </div>
@@ -176,6 +176,6 @@
 <br>
 <br>
 
-<!-- <p>Form Value: {{registerForm.value | json}}</p>
-<p>Form Status: {{registerForm.status | json}}</p> -->
+<p>Form Value: {{registerForm.value | json}}</p>
+<p>Form Status: {{registerForm.status | json}}</p>
 
