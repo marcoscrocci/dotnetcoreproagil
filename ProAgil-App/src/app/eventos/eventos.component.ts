@@ -21,7 +21,7 @@ export class EventosComponent implements OnInit {
   imagemLargura = 50;
   imagemMargem = 2;
   mostrarImagem = false;
-  modalRef!: BsModalRef;
+  //modalRef!: BsModalRef;
   registerForm!: FormGroup;
 
   _filtroLista: string = '';
@@ -43,8 +43,9 @@ export class EventosComponent implements OnInit {
   }
 
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+  openModal(template: any) {
+    template.show();
+    //this.modalRef = this.modalService.show(template);
   }
 
 
