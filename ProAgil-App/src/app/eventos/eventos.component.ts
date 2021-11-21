@@ -19,6 +19,7 @@ export class EventosComponent implements OnInit {
   eventosFiltrados: Evento[] = [];
   eventos: Evento[] = [];
   evento!: Evento;
+  modoSalvar = 'post';
   imagemLargura = 50;
   imagemMargem = 2;
   mostrarImagem = false;
@@ -41,6 +42,18 @@ export class EventosComponent implements OnInit {
   set filtroLista(value: string) {
     this._filtroLista = value;
     this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos;
+  }
+
+  editarEvento(evento: Evento, template: any) {
+    this.modoSalvar = 'put';
+    this.openModal(template);
+    this.evento = evento;
+    this.registerForm.patchValue(evento);
+  }
+
+  novoEvento(template: any) {
+    this.modoSalvar = 'post';
+    this.openModal(template);
   }
 
 
@@ -75,16 +88,30 @@ export class EventosComponent implements OnInit {
 
   salvarAlteracao(template: any) {
     if (this.registerForm.valid) {
-      this.evento = Object.assign({}, this.registerForm.value);
-      this.eventoService.postEvento(this.evento).subscribe(
-        (novoEvento: Evento) => {
-          console.log(novoEvento);
-          template.hide();
-          this.getEventos();
-        }, error => {
-          console.log(error);
-        }
-      );
+      if (this.modoSalvar === 'post') {
+        this.evento = Object.assign({}, this.registerForm.value);
+        this.eventoService.postEvento(this.evento).subscribe(
+          (novoEvento: Evento) => {
+            console.log(novoEvento);
+            template.hide();
+            this.getEventos();
+          }, error => {
+            console.log(error);
+          }
+        );
+      } else {
+        this.evento = Object.assign({ id: this.evento.id }, this.registerForm.value);
+        this.eventoService.putEvento(this.evento).subscribe(
+          (novoEvento: Evento) => {
+            console.log(novoEvento);
+            template.hide();
+            this.getEventos();
+          }, error => {
+            console.log(error);
+          }
+        );
+      }
+
     }
   }
 
