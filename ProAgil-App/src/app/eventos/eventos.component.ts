@@ -20,11 +20,13 @@ export class EventosComponent implements OnInit {
   eventos: Evento[] = [];
   evento!: Evento;
   modoSalvar = 'post';
+  tituloModal = 'Novo Evento';
   imagemLargura = 50;
   imagemMargem = 2;
   mostrarImagem = false;
   //modalRef!: BsModalRef;
   registerForm!: FormGroup;
+  bodyDeletarEvento = '';
 
   _filtroLista: string = '';
 
@@ -44,18 +46,43 @@ export class EventosComponent implements OnInit {
     this.eventosFiltrados = this.filtroLista ? this.filtrarEventos(this.filtroLista) : this.eventos;
   }
 
+  novoEvento(template: any) {
+    this.tituloModal = 'Novo Evento';
+    this.modoSalvar = 'post';
+    this.openModal(template);
+  }
+
   editarEvento(evento: Evento, template: any) {
+    this.tituloModal = 'Editar Evento';
     this.modoSalvar = 'put';
     this.openModal(template);
     this.evento = evento;
     this.registerForm.patchValue(evento);
   }
 
-  novoEvento(template: any) {
-    this.modoSalvar = 'post';
+  excluirEvento(evento: Evento, template: any) {
+    this.tituloModal = 'Excluir Evento';
+    this.modoSalvar = 'delete';
     this.openModal(template);
+    this.evento = evento;
+    this.registerForm.patchValue(evento);
+    /*
+    this.openModal(template);
+    this.evento = evento;
+    this.bodyDeletarEvento = `Tem certeza que deseja excluir o Evento: ${evento.tema}, Código: ${evento.id}`;
+    */
   }
 
+  confirmeDelete(template: any) {
+    this.eventoService.deleteEvento(this.evento.id).subscribe(
+      () => {
+          template.hide();
+          this.getEventos();
+        }, error => {
+          console.log(error);
+        }
+    );
+  }
 
   openModal(template: any) {
     this.registerForm.reset();
@@ -99,7 +126,9 @@ export class EventosComponent implements OnInit {
             console.log(error);
           }
         );
-      } else {
+      }
+
+      if (this.modoSalvar === 'put') {
         this.evento = Object.assign({ id: this.evento.id }, this.registerForm.value);
         this.eventoService.putEvento(this.evento).subscribe(
           (novoEvento: Evento) => {
@@ -110,6 +139,10 @@ export class EventosComponent implements OnInit {
             console.log(error);
           }
         );
+      }
+
+      if (this.modoSalvar === 'delete') {
+        this.confirmeDelete(template);
       }
 
     }
